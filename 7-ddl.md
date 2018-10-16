@@ -27,7 +27,7 @@ If you see `-bash: establish-port-forward: command not found`, reload the setup 
 
 This exercise requires two active sessions to MySQL. I recommend using two cloud shell terminals, but if you are comfortable with using `screen`, you can do so as well.
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/ddl/add-cloud-shell.png "Add Cloud Shell")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/add-cloud-shell.png "Add Cloud Shell")
 
 In both sessions, start `mysql` and switch to the `bikeshare` schema:
 

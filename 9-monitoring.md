@@ -22,23 +22,23 @@ In this instance though, we want to be able to connect with our web-browser, so 
 
 Go to [console.cloud.google.com](https://console.cloud.google.com) and navigate to _Kubernetes Engine_. Click on Workloads, and then find the _demo-monitor_. This is the Grafana deployment that comes with TiDB:
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/workloads.png "Workloads")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/workloads.png "Workloads")
 
 After clicking on _demo-monitor_ select _Expose_ from the actions menu:
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/actions.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/actions.png "Actions > Expose")
 
 You want to expose port 3000 to the Service type _Load balancer_:
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/expose.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/expose.png "Actions > Expose")
 
 You have now created a service to expose Grafana externally. It will take a minute for the public IP address of the load balancer to appear:
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/waiting.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/waiting.png "Actions > Expose")
 
 Hit refresh if you need to. Once the note about "Creating Service Endpoints" disappears, scroll down to find the load balancer's public IP address:
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/final.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/final.png "Actions > Expose")
 
 Note the IP address. In my case it was *35.197.118.183*.
 
@@ -50,17 +50,17 @@ In my case, I opened http://35.197.118.183:3000/.
 
 The default username is "admin" with password "admin".
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/grafana.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/grafana.png "Actions > Expose")
 
 ## Select the TiDB Dashboard
 
 When you have logged in, select the *TiDB-Cluster-TiDB* dashboard:
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/select-dashboard.png "Actions > Expose")
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/tidb-dashboard.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/select-dashboard.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/tidb-dashboard.png "Actions > Expose")
 
 From here you can see that the TiDB servers have already been feeding metrics to Prometheus. We can see the aggregated statistics between demo-tidb-0 and demo-tidb-1:
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/tidb-overview.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/tidb-overview.png "Actions > Expose")
 
 ## Suggested metrics to look at
 
@@ -70,6 +70,6 @@ There are [suggested metrics to look at](https://pingcap.com/docs/op-guide/dashb
 
 Grafana can also be used to trigger alerts, which a few have been configured for you already.
 
-![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/monitoring/alerts.png "Actions > Expose")
+![alt text](https://github.com/pingcap/tidb-academy-labs/raw/master/mysql_dbas/alerts.png "Actions > Expose")
 
 Alerts can be configured to send to your favourite communication channel. There is email of course, but in a modern scenario, integrations like PagerDuty and Slack are typically more useful.
