@@ -110,9 +110,9 @@ When you see `Running`, `Control + C` and proceed to launch a TiDB cluster!
 
 ## Deploy your first TiDB cluster
 
-Now with a single command, we can bring-up a full TiDB cluster. We are overwriting some of the defaults here to use TiDB 2.1, which is currently a release candidate:
+Now, with a single command, we can bring up a full TiDB cluster:
 
-	helm install ./charts/tidb-cluster -n tidb --namespace=tidb --set pd.storageClassName=pd-ssd,tikv.storageClassName=pd-ssd,pd.image=pingcap/pd:latest,tidb.image=pingcap/tidb:latest,tikv.image=pingcap/tikv:latest
+	helm install ./charts/tidb-cluster -n tidb --namespace=tidb --set pd.storageClassName=pd-ssd,tikv.storageClassName=pd-ssd,pd.image=pingcap/pd:v2.1.5,tidb.image=pingcap/tidb:v2.1.5,tikv.image=pingcap/tikv:v2.1.5
 
 It will take a few minutes to launch. You can monitor the progress with:
 
