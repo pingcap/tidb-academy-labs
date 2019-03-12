@@ -38,7 +38,7 @@ Make sure you are in the directory which contains tidb-operator. If you need to,
 ```
 git clone https://github.com/pingcap/tidb-operator.git
 cd tidb-operator
-helm upgrade tidb charts/tidb-cluster --set pd.storageClassName=pd-ssd,tikv.storageClassName=pd-ssd,pd.image=pingcap/pd:latest,tidb.image=pingcap/tidb:latest,tikv.image=pingcap/tikv:latest,tidb.replicas=4
+helm upgrade tidb charts/tidb-cluster --set pd.storageClassName=pd-ssd,tikv.storageClassName=pd-ssd,pd.image=pingcap/pd:v2.1.5,tidb.image=pingcap/tidb:v2.1.5,tikv.image=pingcap/tikv:v2.1.5,tidb.replicas=4
 ```
 
 You can monitor the replicas starting with:
@@ -52,7 +52,7 @@ kubectl get po -n tidb
 Make sure you are in the directory which contains tidb-operator:
 
 ```
-helm upgrade tidb charts/tidb-cluster --set pd.storageClassName=pd-ssd,tikv.storageClassName=pd-ssd,pd.image=pingcap/pd:latest,tidb.image=pingcap/tidb:latest,tikv.image=pingcap/tikv:latest,tidb.replicas=4,tikv.replicas=5
+helm upgrade tidb charts/tidb-cluster --set pd.storageClassName=pd-ssd,tikv.storageClassName=pd-ssd,pd.image=pingcap/pd:v2.1.5,tidb.image=pingcap/tidb:v2.1.5,tikv.image=pingcap/tikv:v2.1.5,tidb.replicas=4,tikv.replicas=5
 kubectl get po -n tidb
 ```
 
@@ -61,6 +61,6 @@ kubectl get po -n tidb
 To reduce operating costs, scale your Kubernetes cluster back down to 3 instances, and TiDB back down to 2:
 
 ```
-helm upgrade tidb charts/tidb-cluster --set pd.storageClassName=pd-ssd,tikv.storageClassName=pd-ssd,pd.image=pingcap/pd:latest,tidb.image=pingcap/tidb:latest,tikv.image=pingcap/tikv:latest,tidb.replicas=2,tikv.replicas=3
+helm upgrade tidb charts/tidb-cluster --set pd.storageClassName=pd-ssd,tikv.storageClassName=pd-ssd,pd.image=pingcap/pd:v2.1.5,tidb.image=pingcap/tidb:v2.1.5,tikv.image=pingcap/tikv:v2.1.5,tidb.replicas=2,tikv.replicas=3
 gcloud container clusters resize tidb --size 3
 ```
