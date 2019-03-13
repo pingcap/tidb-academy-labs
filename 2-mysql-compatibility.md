@@ -85,9 +85,9 @@ Query OK, 0 rows affected (0.17 sec)
 This bash step iterates through the `csv` files and imports them into TiDB. It takes approximately *7 minutes*:
 
 ```
-for FILE in `ls *.csv`;
-  do echo "== $FILE ==" && mysql bikeshare -e "LOAD DATA LOCAL INFILE '${FILE}' INTO TABLE trips FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (duration, start_date, end_date, start_station_number, start_station, end_station_number, end_station, bike_number, member_type);";
-done;
+for file in *.csv
+  do echo "== $file ==" && mysql bikeshare -e "LOAD DATA LOCAL INFILE '$file' INTO TABLE trips FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (duration, start_date, end_date, start_station_number, start_station, end_station_number, end_station, bike_number, member_type);"
+done
 ```
 
 ## Check data
