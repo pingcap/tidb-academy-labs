@@ -196,7 +196,7 @@ MySQL [bikeshare]> EXPLAIN SELECT * FROM trips where bike_number='W22041' and st
 
 Here we can see that `EXPLAIN` shows that the bike_number index is preferred over the index on start_date. If we run the actual query, we can also see that the execution time has reduced from 0.06 seconds to 0.03 seconds.
 
-How did the query optimizer know that `b` was a better index? We can see that in `EXPLAIN`. The statistics that TiDB keeps on indexes estimated that there are 20 rows that match `bike_number = 'W23386'`. An index that matches fewer rows means less rows are needed for the `TableScan_13` operation.
+How did the query optimizer know that `b` was a better index? We can see that in `EXPLAIN`. The statistics that TiDB keeps on indexes estimated that there are 20 rows that match `bike_number = 'W22041'`. An index that matches fewer rows means less rows are needed for the `TableScan_13` operation.
 
 ## Index `sb`
 
@@ -241,15 +241,14 @@ EXPLAIN SELECT * FROM trips WHERE bike_number='W22041' and start_date BETWEEN '2
 ```
 ALTER TABLE trips ADD INDEX bs (bike_number, start_date);
 MySQL [bikeshare]> EXPLAIN SELECT * FROM trips WHERE bike_number='W22041' and start_date BETWEEN '2017-12-01 00:00:00' AND '2017-12-01 23:59:59';
-+----------------------+-------+------+------------------------------------------------------------------------------------------------------------------------+
-| id                   | count | task | operator info                                                                                                          |
-+----------------------+-------+------+------------------------------------------------------------------------------------------------------------------------+
-| IndexLookUp_15       | 0.02  | root |                                                                                                                        |
-| ├─IndexScan_12       | 20.00 | cop  | table:trips, index:bike_number, range:["W22041","W22041"], keep order:false                                            |
-| └─Selection_14       | 0.02  | cop  | ge(bikeshare.trips.start_date, 2017-12-01 00:00:00.000000), le(bikeshare.trips.start_date, 2017-12-01 23:59:59.000000) |
-|   └─TableScan_13     | 20.00 | cop  | table:trips, keep order:false                                                                                          |
-+----------------------+-------+------+------------------------------------------------------------------------------------------------------------------------+
-4 rows in set (0.06 sec)
++-------------------+-------+------+---------------------------------------------------------------------------------------------------------------------------------+
+| id                | count | task | operator info                                                                                                                   |
++-------------------+-------+------+---------------------------------------------------------------------------------------------------------------------------------+
+| IndexLookUp_10    | 0.02  | root |                                                                                                                                 |
+| ├─IndexScan_8     | 0.02  | cop  | table:trips, index:bike_number, start_date, range:["W22041" 2017-12-01 00:00:00,"W22041" 2017-12-01 23:59:59], keep order:false |
+| └─TableScan_9     | 0.02  | cop  | table:trips, keep order:false                                                                                                   |
++-------------------+-------+------+---------------------------------------------------------------------------------------------------------------------------------+
+3 rows in set (0.03 sec)
 ```
 
 ## Conclusion
