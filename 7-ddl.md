@@ -32,7 +32,7 @@ This exercise requires two active sessions to MySQL. I recommend using two cloud
 In both sessions, start `mysql` and switch to the `bikeshare` schema:
 
 ```
-use bikeshake;
+use bikeshare;
 ```
 
 ## Main exercise
